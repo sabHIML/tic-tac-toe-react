@@ -5,13 +5,17 @@
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react-redux": "^7.1.1",
+    "react-scripts": "3.1.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build": "react-scripts build && npm run move-build-to-server",
+    "move-build-to-server": "mv build _build && mv _build ../server && cd ../server && rm -rf public && mv _build public"
   },
   "eslintConfig": {
     "extends": "react-app"
