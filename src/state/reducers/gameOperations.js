@@ -1,4 +1,4 @@
-import { newGame, gameover, switchPlayer, winner, movePlayer } from '../actions/games';
+import { newGame, gameover, switchPlayer, winner, movePlayer } from '../actions';
 import { isWinner, isDraw } from '../utils';
 
 /**
