@@ -1,14 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import App from './App';
+import App from './views/App';
 import * as serviceWorker from './serviceWorker';
-import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware} from 'redux';
-import { root } from './state/reducers'
+import { configureStore } from './state/store';
 
-const store = createStore( root, applyMiddleware( thunkMiddleware ) );
+import { gameOperations } from './state/reducers/reducers';
+
+const initialState = null;
+const store = configureStore(initialState || {});
+
+if (!initialState) {
+
+  const newGame = gameOperations.newGame();
+
+  store.dispatch(newGame);
+}
+
 
 ReactDOM.render(
   <Provider store = {store}>
