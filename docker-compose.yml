@@ -1,0 +1,14 @@
+version: '3'
+services:
+  tictactoe-client:
+    image: "node:10"
+    build: .
+    container_name: "tictactoe-client"
+    environment:
+      NODE_ENV: development
+      NODE_PATH: /
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/usr/src/app/ttt-client/src
+      - ./public:/usr/src/app/ttt-client/public

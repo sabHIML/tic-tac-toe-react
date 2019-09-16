@@ -1,19 +1,18 @@
 #base image
-FROM node
+FROM node:10-alpine
 
 # set working directory
-RUN mkdir /usr/src/app
-RUN mkdir /usr/src/app/ttt-client
+RUN mkdir -p /usr/src/app/ttt-client
+
 #copy all files from current directory to docker
 COPY . /usr/src/app/ttt-client
 
 WORKDIR /usr/src/app/ttt-client
 
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app//ttt-client/node_modules/.bin:$PATH
-
-# install and cache app dependencies
-RUN yarn
+RUN yarn && \
+    yarn build
 
 # start app
 CMD ["yarn", "start"]
+
+EXPOSE 3000
