@@ -21,9 +21,9 @@
 ## Installation
 
 1. Clone the repository.
-2. Enter folder: cd tic-tac-toe
+2. Enter into folder: `cd tic-tac-toe-react`
 3. set API origin in `src/config/api.js`
-4. Install dependencies: yarn
+4. Install dependencies: `yarn`
 5. Runs the app in the development mode: `yarn start` or build it : `yarn build`
 6. Visit [http://localhost:3000](http://localhost:3000) in your browser
 7. Enjoy the game.
