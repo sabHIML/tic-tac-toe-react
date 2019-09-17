@@ -20,6 +20,7 @@
 
 ## Installation
 
+### Manual
 1. Clone the repository.
 2. Enter into folder: `cd tic-tac-toe-react`
 3. set API origin in `src/config/api.js`
