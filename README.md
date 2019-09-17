@@ -1,4 +1,4 @@
-##Fun with Tic Tac Toe
+## Fun with Tic Tac Toe
 
 ### Basic Features:
 * Two users play a game of tick-tack-toe on the same computer
@@ -38,8 +38,8 @@ The easiest way to get up and running is using Docker. Once the Docker CLI is in
 4. Visit [http://127.0.0.1:3000](http://127.0.0.1:3000) in your browser
 
 #### Testing
-After installation, ry `yarn test` to run automated test cases.
+After installation, run `yarn test` to run automated test cases.
 
 #### API Project 
-API part stored in [this](http://127.0.0.1:3000) Repository.  
+API part stored in [this](https://github.com/sabHIML/tic-tac-toe-api) Repository.  
  
