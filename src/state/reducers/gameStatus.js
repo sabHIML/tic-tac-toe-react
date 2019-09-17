@@ -21,6 +21,8 @@ const moveReducer = (state = [[]], action) => {
   switch (action.type) {
     case types.NEW_GAME:
       return [];
+      case types.RESUME_GAME:
+          return action.payload.move;
     case types.MOVE:
       return [...state, {
         player : action.payload.player,
@@ -34,18 +36,11 @@ const moveReducer = (state = [[]], action) => {
 
 const boardReducer = (state = [[]], action) => {
   switch (action.type) {
-    
+
     case types.NEW_GAME:
-
       return emptyBoard();
-
     case types.RESUME_GAME:
-
-      return Object.assign({}, 
-        state,
-        action.payload.board,
-      );
-
+      return action.payload.board;
     case types.MOVE:
       return move(state, action.payload);
     default:
@@ -84,6 +79,8 @@ const playerReducer = (state = 1, action) => {
       return action.payload;
     case types.NEW_GAME:
       return 1;
+    case types.RESUME_GAME:
+      return action.payload.player;
     default:
       return state;
   }

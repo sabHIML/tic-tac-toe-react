@@ -12,9 +12,8 @@ const initialState = null;
 const store = configureStore(initialState || {});
 
 if (!initialState) {
-
-  const newGame = gameOperations.newGame();
-
+    // game starting point
+  const newGame = gameOperations.startGame();
   store.dispatch(newGame);
 }
 

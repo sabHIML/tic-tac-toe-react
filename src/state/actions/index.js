@@ -4,6 +4,11 @@ const newGame = () => ({
   type: types.NEW_GAME
 });
 
+const resumeGame = (player, move, board) => ({
+  type: types.RESUME_GAME,
+  payload: { player, move, board }
+});
+
 const gameover = () => ({
   type: types.GAMEOVER
 });
@@ -25,6 +30,7 @@ const winner = player => ({
 
 export {
   newGame,
+  resumeGame,
   gameover,
   movePlayer,
   switchPlayer,

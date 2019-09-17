@@ -11,15 +11,16 @@ class Board extends Component {
     super(props, context);
 
     this.boxClicked = this.boxClicked.bind(this);
+    this.freshGame = this.freshGame.bind(this);
   }
 
-    /**
-     *
-     * @param clickedBox
-     */
+  /**
+   * Handle move by player on a box 
+   * @param clickedBox
+   */
   boxClicked(clickedBox) {
 
-    const { board, player, gameover, playTurn, checkWinner } = this.props;
+    const { board, player, gameover, playTurn, checkWinner} = this.props;
     const { row, col } = clickedBox;
 
     // validation : only mark if the game is still in progress and the box is empty
@@ -27,10 +28,29 @@ class Board extends Component {
       return;
     }
 
-    // make a play for the player
+    // make a play for the player.
+    // it will update the board and switch player
     playTurn(player, row, col);
     // then check for a winner
     checkWinner(board, player);
+
+    // record states into API
+    const { moves, recordState } = this.props;
+
+    // recordState(board, player, moves); // @todo why moves state is not up-to-date during calling this function
+    recordState(board, player, [...moves, {
+      player : player,
+      col : col,
+      row : row,
+    }]); // @todo this is a quick hack, remove this line after solving problem in above line.
+  }
+
+  /**
+   * start a new game
+   */
+  freshGame() {
+    const { startNewGame } = this.props;
+    startNewGame();
   }
 
   render() {
@@ -57,7 +77,8 @@ class Board extends Component {
             </div>
 
             <Info gameStatusMsg={gameStatusMsg} player={player}
-            gameover={gameover} moves={moves}/>
+                gameover={gameover} moves={moves}
+                  freshGame = {this.freshGame}/>
 
         </div>
         
@@ -72,8 +93,10 @@ Board.propTypes = {
   gameover: bool.isRequired,
   playTurn: func.isRequired,
   checkWinner: func.isRequired,
+  recordState: func.isRequired,
   winner: number.isRequired,
-  moves: arrayOf(arrayOf(object)).isRequired
+  moves: arrayOf(arrayOf(object)).isRequired,
+  startNewGame: func.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -90,7 +113,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   playTurn: gameOperations.playTurn,
-  checkWinner: gameOperations.checkWinner
+  checkWinner: gameOperations.checkWinner,
+  recordState: gameOperations.recordState,
+  startNewGame: gameOperations.startNewGame
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

@@ -39,7 +39,17 @@ const isWinner = (board, player) =>
  */
 const isDraw = board => !board.some(row => row.some(col => col === 0));
 
+/**
+ * Show notification
+ * @param msg
+ */
+const showNotification = msg => {
+  //@todo use components instead of alert
+  alert(msg);
+}
 export {
   isWinner,
-  isDraw
+  isDraw,
+  showNotification
 };
+

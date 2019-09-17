@@ -10,6 +10,7 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
+    color: #444444;
   }
   
   #head {
@@ -54,4 +55,13 @@
   
   .box:nth-child(3n) {
       border-right: 0;
+  }
+
+  button {
+    padding: 10px;
+    margin: 20px;
+  }
+
+  li {
+    list-style: none;
   }
