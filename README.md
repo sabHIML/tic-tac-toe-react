@@ -2,7 +2,7 @@
 
 ### Basic Features:
 * Two users play a game of tick-tack-toe on the same computer
-* No real-time functionality is required
+* No real-time functionality
 * Single session
 * All actions are reported to the API, which saves them
 * Action log is displayed underneath the game area, read from the API
